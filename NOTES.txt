@@ -1,0 +1,12 @@
+# To create production version for distribution
+
+To create distribution package, use `sdist` option (source distribution):
+
+    python setup.py sdist
+
+
+# Project Log
+
+
+
+

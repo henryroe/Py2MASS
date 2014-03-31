@@ -1,0 +1,1437 @@
+column,Parameter Name,View,Format,Units,Description
+1,jdate,L,13.4f,day,"Julian date of the source measurement accurate to ±3 minutes. This value is the mean Julian date of the scan observation in which this source falls. For a more precise value of Julian date for this source, see the jdate entry in the PSC using the pts_key index as a cross-reference. "
+2,designation,S,17s,-,"Source designation formed from sexigesimal coordinates.
+This is the object sequence designation, or object ""name"" as specified by the IAU recommendations on source nomenclature. It is derived from the J2000 sexigesimal coordinates of the source and has the form HHMMSSSS+/-DDMMSSS, where HH are the hours of right ascension, MM the RA minutes and SSS are the deci-seconds of RA. DD are the degrees in declination, MM are DEC minutes and SS the declination seconds. Note that both the RA deci-seconds of time and DEC seconds of arc are truncated rather than rounded, per the IAU recommendation. The full naming convention for 2MASS All-Sky Release sources has the form ""2MASX Jhhmmssss+ddmmsss[ABC...]"", where ""2MASX"" indicates that the source is from the All-Sky XSC, ""J"" indicates the position is J2000, and the optional trailing letters are used to distinguish sources with otherwise duplicate names. The ""2MASX J"" prefix is not listed explicitly in the designation column."
+3,ra,S,10.6f,deg,Right ascension (J2000 decimal deg) based on peak pixel.
+4,dec/decl,S,10.6f,deg,Declination (J2000 decimal deg) based on peak pixel.
+5,sup_ra,L,10.6f,deg,Super-coadd centroid RA (J2000 decimal deg).
+6,sup_dec,L,10.6f,deg,Super-coadd centroid Dec (J2000 decimal deg).
+7,glon,L,7.3f,deg,"Galactic longitude (decimal deg) based on peak pixel. Galactic coordinate for 2MASS source derived by precessing reconstructed ra and dec to B1950, and performing rotational transformation into lII, bII coordinate system. This coordinate should not be used as an astrometric reference because it has been rounded to 0.001 deg. "
+8,glat,L,7.3f,deg,"Galactic latitude (decimal deg) based on peak pixel. Galactic coordinate for 2MASS source derived by precessing reconstructed ra and dec to B1950, and performing rotational transformation into lII, bII coordinate system. This coordinate should not be used as an astrometric reference because it has been rounded to 0.001 deg. "
+9,density,L,5.2f,-,"Coadd log(density) of stars with k<14 mag. See Stellar Number Density Metric: ""density"". "
+10,r_k20fe,S,6.1f,arcsec,"20mag/sq."" isophotal K fiducial ell. ap. semi-major axis.
+""Fiducial"" apertures are determined for each type of total and isophotal photometry measurements as described in the GALWORKS SDS. Essentially, they are used to make mag measurements for each type of photometry with the same aperture size in all three bands. The fiducial band for the total Kron photometry and 20mag/sq."" isophotal photometry is the K band, and for the 21mag/sq."" isophotal photometry it is the J band. 
+See Large Aperture Photometry: Profile Fitting, Isophotal & Total Mags. "
+11,j_m_k20fe,S,6.3f,mag,"J 20mag/sq."" isophotal fiducial ell. ap. magnitude.
+See Large Aperture Photometry: Profile Fitting, Isophotal & Total Mags. "
+12,j_msig_k20fe,S,5.3f,mag,"J 1-sigma uncertainty in 20mag/sq."" iso.fid.ell.mag."
+13,j_flg_k20fe,S,1hd,-,"J confusion flag for 20mag/sq."" iso. fid. ell. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+14,h_m_k20fe,S,6.3f,mag,"H 20mag/sq."" isophotal fiducial ell. ap. magnitude.
+See Large Aperture Photometry: Profile Fitting, Isophotal & Total Mags. "
+15,h_msig_k20fe,S,5.3f,mag,"H 1-sigma uncertainty in 20mag/sq."" iso.fid.ell.mag."
+16,h_flg_k20fe,S,1hd,-,"H confusion flag for 20mag/sq."" iso. fid. ell. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+17,k_m_k20fe,S,6.3f,mag,"K 20mag/sq."" isophotal fiducial ell. ap. magnitude.
+See Large Aperture Photometry: Profile Fitting, Isophotal & Total Mags. "
+18,k_msig_k20fe,S,5.3f,mag,"K 1-sigma uncertainty in 20mag/sq."" iso.fid.ell.mag."
+19,k_flg_k20fe,S,1hd,-,"K confusion flag for 20mag/sq."" iso. fid. ell. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+20,r_3sig,L,5.1f,arcsec,3-sigma K isophotal semi-major axis.
+21,j_ba,L,5.3f,-,J minor/major axis ratio fit to the 3-sigma isophote.
+22,j_phi,L,3hd,deg,J angle to 3-sigma major axis (E of N).
+23,h_ba,L,5.3f,-,H minor/major axis ratio fit to the 3-sigma isophote.
+24,h_phi,L,3hd,deg,H angle to 3-sigma major axis (E of N).
+25,k_ba,S,5.3f,-,K minor/major axis ratio fit to the 3-sigma isophote.
+26,k_phi,S,3hd,deg,K angle to 3-sigma major axis (E of N).
+27,sup_r_3sig,L,5.1f,arcsec,Super-coadd 3-sigma isophotal semi-major axis radius.
+28,sup_ba,S,5.3f,-,Minor/major axis ratio fit to 3-sig. super-coadd isophote.
+29,sup_phi,S,3hd,deg,Super-coadd angle to major axis (E of N).
+30,r_fe,L,6.1f,arcsec,"K fiducial Kron elliptical aperture semi-major axis.
+""Fiducial"" apertures are determined for each type of total and isophotal photometry measurements as described in the GALWORKS SDS. Essentially, they are used to make mag measurements for each type of photometry with the same aperture size in all three bands. The fiducial band for the total Kron photometry and 20mag/sq."" isophotal photometry is the K band, and for the 21mag/sq."" isophotal photometry it is the J band. 
+See Large Aperture Photometry: Profile Fitting, Isophotal & Total Mags. "
+31,j_m_fe,L,6.3f,mag,"J fiducial Kron elliptical aperture magnitude.
+See Large Aperture Photometry: Profile Fitting, Isophotal & Total Mags. "
+32,j_msig_fe,L,5.3f,mag,J 1-sigma uncertainty in fiducial Kron ell. mag.
+33,j_flg_fe,L,1hd,-,"J confusion flag for fiducial Kron ell. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+34,h_m_fe,L,6.3f,mag,"H fiducial Kron elliptical aperture magnitude.
+See Large Aperture Photometry: Profile Fitting, Isophotal & Total Mags. "
+35,h_msig_fe,L,5.3f,mag,H 1-sigma uncertainty in fiducial Kron ell. mag.
+36,h_flg_fe,L,1hd,-,"H confusion flag for fiducial Kron ell. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+37,k_m_fe,L,6.3f,mag,"K fiducial Kron ell. mag aperture magnitude.
+See Large Aperture Photometry: Profile Fitting, Isophotal & Total Mags. "
+38,k_msig_fe,L,5.3f,mag,K 1-sigma uncertainty in fiducial Kron ell. mag.
+39,k_flg_fe,L,1hd,-,"K confusion flag for fiducial Kron ell. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+40,r_ext,S,7.2f,arcsec,"extrapolation/total radius.
+See Large Aperture Photometry: Profile Fitting, Isophotal & Total Mags. "
+41,j_m_ext,S,6.3f,mag,"J mag from fit extrapolation.
+See Large Aperture Photometry: Profile Fitting, Isophotal & Total Mags. "
+42,j_msig_ext,L,5.3f,mag,J 1-sigma uncertainty in mag from fit extrapolation.
+43,j_pchi,S,6.3f,-,"J chi^2 of fit to rad. profile (LCSB: alpha scale len).
+If the source is not an LCSB, these fields contain the reduced chi-squared values for each band of the modified exponential fits to the elliptical radial profiles, used for extrapolation and half-light estimates. For LCSBs, they contain the alpha scale lengths."
+44,h_m_ext,S,6.3f,mag,"H mag from fit extrapolation.
+See Large Aperture Photometry: Profile Fitting, Isophotal & Total Mags. "
+45,h_msig_ext,S,5.3f,mag,H 1-sigma uncertainty in mag from fit extrapolation.
+46,h_pchi,L,6.3f,-,"H chi^2 of fit to rad. profile (LCSB: alpha scale len).
+If the source is not an LCSB, these fields contain the reduced chi-squared values for each band of the modified exponential fits to the elliptical radial profiles, used for extrapolation and half-light estimates. For LCSBs, they contain the alpha scale lengths."
+47,k_m_ext,S,6.3f,mag,"K mag from fit extrapolation.
+See Large Aperture Photometry: Profile Fitting, Isophotal & Total Mags. "
+48,k_msig_ext,S,5.3f,mag,K 1-sigma uncertainty in mag from fit extrapolation.
+49,k_pchi,L,6.3f,-,"K chi^2 of fit to rad. profile (LCSB: alpha scale len).
+If the source is not an LCSB, these fields contain the reduced chi-squared values for each band of the modified exponential fits to the elliptical radial profiles, used for extrapolation and half-light estimates. For LCSBs, they contain the alpha scale lengths."
+50,j_r_eff,L,6.2f,arcsec,"J half-light (integrated half-flux point) radius. 
+See Half-Light ""Effective"" Aperture & Concentration Index 
+Beware the circularizing effect of the PSF on small galaxies. See The 2MASS Beam. "
+51,j_mnsurfb_eff,L,5.2f,mag,"J mean surface brightness at the half-light radius. 
+See Half-Light ""Effective"" Aperture & Concentration Index 
+Beware the circularizing effect of the PSF on small galaxies. See The 2MASS Beam. "
+52,h_r_eff,L,6.2f,arcsec,"H half-light (integrated half-flux point) radius. 
+See Half-Light ""Effective"" Aperture & Concentration Index 
+Beware the circularizing effect of the PSF on small galaxies. See The 2MASS Beam. "
+53,h_mnsurfb_eff,L,5.2f,mag,"H mean surface brightness at the half-light radius. 
+See Half-Light ""Effective"" Aperture & Concentration Index 
+Beware the circularizing effect of the PSF on small galaxies. See The 2MASS Beam. "
+54,k_r_eff,L,6.2f,arcsec,"K half-light (integrated half-flux point) radius. 
+See Half-Light ""Effective"" Aperture & Concentration Index 
+Beware the circularizing effect of the PSF on small galaxies. See The 2MASS Beam. "
+55,k_mnsurfb_eff,L,5.2f,mag,"K mean surface brightness at the half-light radius. 
+See Half-Light ""Effective"" Aperture & Concentration Index 
+Beware the circularizing effect of the PSF on small galaxies. See The 2MASS Beam. "
+56,j_con_indx,L,5.2f,-,"J concentration index r_75%/r_25%.
+The concentration index for the galaxy in each band is the ratio of the radii which contain 75% and 25% of the total light, r_75%/r_25%. 
+See Half-Light ""Effective"" Aperture & Concentration Index 
+Beware the circularizing effect of the PSF on small galaxies. See The 2MASS Beam."
+57,h_con_indx,L,5.2f,-,"H concentration index r_75%/r_25%.
+The concentration index for the galaxy in each band is the ratio of the radii which contain 75% and 25% of the total light, r_75%/r_25%. 
+See Half-Light ""Effective"" Aperture & Concentration Index 
+Beware the circularizing effect of the PSF on small galaxies. See The 2MASS Beam."
+58,k_con_indx,L,5.2f,-,"K concentration index r_75%/r_25%.
+The concentration index for the galaxy in each band is the ratio of the radii which contain 75% and 25% of the total light, r_75%/r_25%. 
+See Half-Light ""Effective"" Aperture & Concentration Index 
+Beware the circularizing effect of the PSF on small galaxies. See The 2MASS Beam."
+59,j_peak,L,6.2f,mag,J peak pixel brightness.
+60,h_peak,L,6.2f,mag,H peak pixel brightness.
+61,k_peak,L,6.2f,mag,K peak pixel brightness.
+62,j_5surf,L,6.2f,mag,J central surface brightness (r<=5).
+63,h_5surf,L,6.2f,mag,H central surface brightness (r<=5).
+64,k_5surf,L,6.2f,mag,K central surface brightness (r<=5).
+65,e_score,L,5.2f,-,"extended score: 1(extended) < e_score < 2(point-like).
+See the FAQ: Star-Galaxy Separation: How do the E and G-scores work? "
+66,g_score,L,5.2f,-,"galaxy score: 1(extended) < g_score < 2(point-like).
+See the FAQ: Star-Galaxy Separation: How do the E and G-scores work? "
+67,vc,L,2hd,-,"visual verification score for source.
+The visual classification score gives the source type for those sources examined ""by eye"":
+-2 = unknown 
+-1 = no verification (i.e., not examined) 
+1 = galaxy 
+2 = non-extended (e.g., star, double, triple, artifact) 
+See Visual Inspection of Extended Sources"
+68,cc_flg,S,1s,-,"indicates artifact contamination and/or confusion.
+The contamination/confusion flag indicates whether the source's photometry and position may be affected by artifacts of, or confusion with, nearby bright stars. The flag consists of a single character string. Sources are tested for contamination and/or confusion in the order given below, and once a flag is applied to the source, testing is stopped in that band. The flag values indicate the source may be:
+U: unreliable source; probable image artifact detection
+C: affected by confusion with or artifact of a nearby bright star
+A or a: known artifacts
+z: in close promity to a large galaxy; these sources are usually junk
+Z: Derived from the Large Galaxy Atlas
+0: default value -- not contaminated
+See Extended Source Confusion Flag"
+69,im_nx,L,4hd,-,"size of postage stamp image in pixels.
+To access the XSC postage stamp images (both jpeg and FITS versions), click 2MASS All-Sky XSC Full-Resolution Image Server"
+70,r_k20fc,L,5.1f,arcsec,"20mag/sq."" isophotal K fiducial circular ap. radius.
+""Fiducial"" apertures are determined for each type of total and isophotal photometry measurements as described in the GALWORKS SDS. Essentially, they are used to make mag measurements for each type of photometry with the same aperture size in all three bands. The fiducial band for the total Kron photometry and 20mag/sq."" isophotal photometry is the K band, and for the 21mag/sq."" isophotal photometry it is the J band. Cautionary note: A negative value in this column indicates that the source measurement was corrupted, usually due to confusion from a nearby source, and the derived radius is not meaningful."
+71,j_m_k20fc,L,6.3f,mag,"J 20mag/sq."" isophotal fiducial circ. ap. mag."
+72,j_msig_k20fc,L,5.3f,mag,"J 1-sigma uncertainty in 20mag/sq."" iso.fid.circ. mag."
+73,j_flg_k20fc,L,1hd,-,"J confusion flag for 20mag/sq."" iso. fid. circ. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+74,h_m_k20fc,L,6.3f,mag,"H 20mag/sq."" isophotal fiducial circ. ap. mag."
+75,h_msig_k20fc,L,5.3f,mag,"H 1-sigma uncertainty in 20mag/sq."" iso.fid.circ. mag."
+76,h_flg_k20fc,L,1hd,-,"H confusion flag for 20mag/sq."" iso. fid. circ. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+77,k_m_k20fc,L,6.3f,mag,"K 20mag/sq."" isophotal fiducial circ. ap. mag."
+78,k_msig_k20fc,L,5.3f,mag,"K 1-sigma uncertainty in 20mag/sq."" iso.fid.circ. mag."
+79,k_flg_k20fc,L,1hd,-,"K confusion flag for 20mag/sq."" iso. fid. circ. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+80,j_r_e,L,5.1f,arcsec,J Kron elliptical aperture semi-major axis.
+81,j_m_e,L,6.3f,mag,J Kron elliptical aperture magnitude.
+82,j_msig_e,L,5.3f,mag,J 1-sigma uncertainty in Kron elliptical mag.
+83,j_flg_e,L,1hd,-,"J confusion flag for Kron elliptical mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+84,h_r_e,L,5.1f,arcsec,H Kron elliptical aperture semi-major axis.
+85,h_m_e,L,6.3f,mag,H Kron elliptical aperture magnitude.
+86,h_msig_e,L,5.3f,mag,H 1-sigma uncertainty in Kron elliptical mag.
+87,h_flg_e,L,1hd,-,"H confusion flag for Kron elliptical mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+88,k_r_e,L,5.1f,arcsec,K Kron elliptical aperture semi-major axis.
+89,k_m_e,L,6.3f,mag,K Kron elliptical aperture magnitude.
+90,k_msig_e,L,5.3f,mag,K 1-sigma uncertainty in Kron elliptical mag.
+91,k_flg_e,L,1hd,-,"K confusion flag for Kron elliptical mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+92,j_r_c,L,5.1f,arcsec,J Kron circular aperture radius.
+93,j_m_c,L,6.3f,mag,J Kron circular aperture magnitude.
+94,j_msig_c,L,5.3f,mag,J 1-sigma uncertainty in Kron circular mag.
+95,j_flg_c,L,1hd,-,"J confusion flag for Kron circular mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+96,h_r_c,L,5.1f,arcsec,H Kron circular aperture radius.
+97,h_m_c,L,6.3f,mag,H Kron circular aperture magnitude.
+98,h_msig_c,L,5.3f,mag,H 1-sigma uncertainty in Kron circular mag.
+99,h_flg_c,L,1hd,-,"H confusion flag for Kron circular mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+100,k_r_c,L,5.1f,arcsec,K Kron circular aperture radius.
+101,k_m_c,L,6.3f,mag,K Kron circular aperture magnitude.
+102,k_msig_c,L,5.3f,mag,K 1-sigma uncertainty in Kron circular mag.
+103,k_flg_c,L,1hd,-,"K confusion flag for Kron circular mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+104,r_fc,L,5.1f,arcsec,"K fiducial Kron circular aperture radius.
+""Fiducial"" apertures are determined for each type of total and isophotal photometry measurements as described in the GALWORKS SDS. Essentially, they are used to make mag measurements for each type of photometry with the same aperture size in all three bands. The fiducial band for the total Kron photometry and 20mag/sq."" isophotal photometry is the K band, and for the 21mag/sq."" isophotal photometry it is the J band."
+105,j_m_fc,L,6.3f,mag,J fiducial Kron circular magnitude.
+106,j_msig_fc,L,5.3f,mag,J 1-sigma uncertainty in fiducial Kron circ. mag.
+107,j_flg_fc,L,1hd,-,"J confusion flag for fiducial Kron circ. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+108,h_m_fc,L,6.3f,mag,H fiducial Kron circular magnitude.
+109,h_msig_fc,L,5.3f,mag,H 1-sigma uncertainty in fiducial Kron circ. mag.
+110,h_flg_fc,L,1hd,-,"H confusion flag for fiducial Kron circ. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+111,k_m_fc,L,6.3f,mag,K fiducial Kron circular magnitude.
+112,k_msig_fc,L,5.3f,mag,K 1-sigma uncertainty in fiducial Kron circ. mag.
+113,k_flg_fc,L,1hd,-,"K confusion flag for fiducial Kron circ. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+114,j_r_i20e,L,5.1f,arcsec,"J 20mag/sq."" isophotal elliptical ap. semi-major axis."
+115,j_m_i20e,L,6.3f,mag,"J 20mag/sq."" isophotal elliptical ap. magnitude."
+116,j_msig_i20e,L,5.3f,mag,"J 1-sigma uncertainty in 20mag/sq."" iso. ell. mag."
+117,j_flg_i20e,L,1hd,-,"J confusion flag for 20mag/sq."" iso. ell. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+118,h_r_i20e,L,5.1f,arcsec,"H 20mag/sq."" isophotal elliptical ap. semi-major axis."
+119,h_m_i20e,L,6.3f,mag,"H 20mag/sq."" isophotal elliptical ap. magnitude."
+120,h_msig_i20e,L,5.3f,mag,"H 1-sigma uncertainty in 20mag/sq."" iso. ell. mag."
+121,h_flg_i20e,L,1hd,-,"H confusion flag for 20mag/sq."" iso. ell. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+122,k_r_i20e,L,5.1f,arcsec,"K 20mag/sq."" isophotal elliptical ap. semi-major axis."
+123,k_m_i20e,L,6.3f,mag,"K 20mag/sq."" isophotal elliptical ap. magnitude."
+124,k_msig_i20e,L,5.3f,mag,"K 1-sigma uncertainty in 20mag/sq."" iso. ell. mag."
+125,k_flg_i20e,L,1hd,-,"K confusion flag for 20mag/sq."" iso. ell. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+126,j_r_i20c,L,5.1f,arcsec,"J 20mag/sq."" isophotal circular aperture radius."
+127,j_m_i20c,L,6.3f,mag,"J 20mag/sq."" isophotal circular ap. magnitude."
+128,j_msig_i20c,L,5.3f,mag,"J 1-sigma uncertainty in 20mag/sq."" iso. circ. mag."
+129,j_flg_i20c,L,1hd,-,"J confusion flag for 20mag/sq."" iso. circ. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+130,h_r_i20c,L,5.1f,arcsec,"H 20mag/sq."" isophotal circular aperture radius."
+131,h_m_i20c,L,6.3f,mag,"H 20mag/sq."" isophotal circular ap. magnitude."
+132,h_msig_i20c,L,5.3f,mag,"H 1-sigma uncertainty in 20mag/sq."" iso. circ. mag."
+133,h_flg_i20c,L,1hd,-,"H confusion flag for 20mag/sq."" iso. circ. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+134,k_r_i20c,L,5.1f,arcsec,"K 20mag/sq."" isophotal circular aperture radius."
+135,k_m_i20c,L,6.3f,mag,"K 20mag/sq."" isophotal circular ap. magnitude."
+136,k_msig_i20c,L,5.3f,mag,"K 1-sigma uncertainty in 20mag/sq."" iso. circ. mag."
+137,k_flg_i20c,L,1hd,-,"K confusion flag for 20mag/sq."" iso. circ. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+138,j_r_i21e,L,5.1f,arcsec,"J 21mag/sq."" isophotal elliptical ap. semi-major axis."
+139,j_m_i21e,L,6.3f,mag,"J 21mag/sq."" isophotal elliptical ap. magnitude."
+140,j_msig_i21e,L,5.3f,mag,"J 1-sigma uncertainty in 21mag/sq."" iso. ell. mag."
+141,j_flg_i21e,L,1hd,-,"J confusion flag for 21mag/sq."" iso. ell. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+142,h_r_i21e,L,5.1f,arcsec,"H 21mag/sq."" isophotal elliptical ap. semi-major axis."
+143,h_m_i21e,L,6.3f,mag,"H 21mag/sq."" isophotal elliptical ap. magnitude."
+144,h_msig_i21e,L,5.3f,mag,"H 1-sigma uncertainty in 21mag/sq."" iso. ell. mag."
+145,h_flg_i21e,L,1hd,-,"H confusion flag for 21mag/sq."" iso. ell. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+146,k_r_i21e,L,5.1f,arcsec,"K 21mag/sq."" isophotal elliptical ap. semi-major axis."
+147,k_m_i21e,L,6.3f,mag,"K 21mag/sq."" isophotal elliptical ap. magnitude."
+148,k_msig_i21e,L,5.3f,mag,"K 1-sigma uncertainty in 21mag/sq."" iso. ell. mag."
+149,k_flg_i21e,L,1hd,-,"K confusion flag for 21mag/sq."" iso. ell. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+150,r_j21fe,L,5.1f,arcsec,"21mag/sq."" isophotal J fiducial ell. ap. semi-major axis.
+""Fiducial"" apertures are determined for each type of total and isophotal photometry measurements as described in the GALWORKS SDS. Essentially, they are used to make mag measurements for each type of photometry with the same aperture size in all three bands. The fiducial band for the total Kron photometry and 20mag/sq."" isophotal photometry is the K band, and for the 21mag/sq."" isophotal photometry it is the J band."
+151,j_m_j21fe,L,6.3f,mag,"J 21mag/sq."" isophotal fiducial ell. ap. magnitude."
+152,j_msig_j21fe,L,5.3f,mag,"J 1-sigma uncertainty in 21mag/sq."" iso.fid.ell.mag."
+153,j_flg_j21fe,L,1hd,-,"J confusion flag for 21mag/sq."" iso. fid. ell. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+154,h_m_j21fe,L,6.3f,mag,"H 21mag/sq."" isophotal fiducial ell. ap. magnitude."
+155,h_msig_j21fe,L,5.3f,mag,"H 1-sigma uncertainty in 21mag/sq."" iso.fid.ell.mag."
+156,h_flg_j21fe,L,1hd,-,"H confusion flag for 21mag/sq."" iso. fid. ell. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+157,k_m_j21fe,L,6.3f,mag,"K 21mag/sq."" isophotal fiducial ell. ap. magnitude."
+158,k_msig_j21fe,L,5.3f,mag,"K 1-sigma uncertainty in 21mag/sq."" iso.fid.ell.mag."
+159,k_flg_j21fe,L,1hd,-,"K confusion flag for 21mag/sq."" iso. fid. ell. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+160,j_r_i21c,L,5.1f,arcsec,"J 21mag/sq."" isophotal circular aperture radius."
+161,j_m_i21c,L,6.3f,mag,"J 21mag/sq."" isophotal circular ap. magnitude."
+162,j_msig_i21c,L,5.3f,mag,"J 1-sigma uncertainty in 21mag/sq."" iso. circ. mag."
+163,j_flg_i21c,L,1hd,-,"J confusion flag for 21mag/sq."" iso. circ. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+164,h_r_i21c,L,5.1f,arcsec,"H 21mag/sq."" isophotal circular aperture radius."
+165,h_m_i21c,L,6.3f,mag,"H 21mag/sq."" isophotal circular ap. magnitude."
+166,h_msig_i21c,L,5.3f,mag,"H 1-sigma uncertainty in 21mag/sq."" iso. circ. mag."
+167,h_flg_i21c,L,1hd,-,"H confusion flag for 21mag/sq."" iso. circ. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+168,k_r_i21c,L,5.1f,arcsec,"K 21mag/sq."" isophotal circular aperture radius."
+169,k_m_i21c,L,6.3f,mag,"K 21mag/sq."" isophotal circular ap. magnitude."
+170,k_msig_i21c,L,5.3f,mag,"K 1-sigma uncertainty in 21mag/sq."" iso. circ. mag."
+171,k_flg_i21c,L,1hd,-,"K confusion flag for 21mag/sq."" iso. circ. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+172,r_j21fc,L,5.1f,arcsec,"21mag/sq."" isophotal J fiducial circular ap. radius.
+""Fiducial"" apertures are determined for each type of total and isophotal photometry measurements as described in the GALWORKS SDS. Essentially, they are used to make mag measurements for each type of photometry with the same aperture size in all three bands. The fiducial band for the total Kron photometry and 20mag/sq."" isophotal photometry is the K band, and for the 21mag/sq."" isophotal photometry it is the J band."
+173,j_m_j21fc,L,6.3f,mag,"J 21mag/sq."" isophotal fiducial circ. ap. mag."
+174,j_msig_j21fc,L,5.3f,mag,"J 1-sigma uncertainty in 21mag/sq."" iso.fid.circ.mag."
+175,j_flg_j21fc,L,1hd,-,"J confusion flag for 21mag/sq."" iso. fid. circ. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+176,h_m_j21fc,L,6.3f,mag,"H 21mag/sq."" isophotal fiducial circ. ap. mag."
+177,h_msig_j21fc,L,5.3f,mag,"H 1-sigma uncertainty in 21mag/sq."" iso.fid.circ.mag."
+178,h_flg_j21fc,L,1hd,-,"H confusion flag for 21mag/sq."" iso. fid. circ. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+179,k_m_j21fc,L,6.3f,mag,"K 21mag/sq."" isophotal fiducial circ. ap. mag."
+180,k_msig_j21fc,L,5.3f,mag,"K 1-sigma uncertainty in 21mag/sq."" iso.fid.circ.mag."
+181,k_flg_j21fc,L,1hd,-,"K confusion flag for 21mag/sq."" iso. fid. circ. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+182,j_m_5,L,6.3f,mag,J 5 arcsec radius circular aperture magnitude.
+183,j_msig_5,L,5.3f,mag,J 1-sigma uncertainty in 5 arcsec circular ap. mag.
+184,j_flg_5,L,1hd,-,"J confusion flag for 5 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+185,h_m_5,L,6.3f,mag,H 5 arcsec radius circular aperture magnitude.
+186,h_msig_5,L,5.3f,mag,H 1-sigma uncertainty in 5 arcsec circular ap. mag.
+187,h_flg_5,L,1hd,-,"H confusion flag for 5 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+188,k_m_5,L,6.3f,mag,K 5 arcsec radius circular aperture magnitude.
+189,k_msig_5,L,5.3f,mag,K 1-sigma uncertainty in 5 arcsec circular ap. mag.
+190,k_flg_5,L,1hd,-,"K confusion flag for 5 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+191,j_m_7,L,6.3f,mag,J 7 arcsec radius circular aperture magnitude.
+192,j_msig_7,L,5.3f,mag,J 1-sigma uncertainty in 7 arcsec circular ap. mag.
+193,j_flg_7,L,1hd,-,"J confusion flag for 7 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+194,h_m_7,L,6.3f,mag,H 7 arcsec radius circular aperture magnitude.
+195,h_msig_7,L,5.3f,mag,H 1-sigma uncertainty in 7 arcsec circular ap. mag.
+196,h_flg_7,L,1hd,-,"H confusion flag for 7 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+197,k_m_7,L,6.3f,mag,K 7 arcsec radius circular aperture magnitude.
+198,k_msig_7,L,5.3f,mag,K 1-sigma uncertainty in 7 arcsec circular ap. mag.
+199,k_flg_7,L,1hd,-,"K confusion flag for 7 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+200,j_m_10,L,6.3f,mag,J 10 arcsec radius circular aperture magnitude.
+201,j_msig_10,L,5.3f,mag,J 1-sigma uncertainty in 10 arcsec circular ap. mag.
+202,j_flg_10,L,1hd,-,"J confusion flag for 10 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+203,h_m_10,L,6.3f,mag,H 10 arcsec radius circular aperture magnitude.
+204,h_msig_10,L,5.3f,mag,H 1-sigma uncertainty in 10 arcsec circular ap. mag.
+205,h_flg_10,L,1hd,-,"H confusion flag for 10 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+206,k_m_10,L,6.3f,mag,K 10 arcsec radius circular aperture magnitude.
+207,k_msig_10,L,5.3f,mag,K 1-sigma uncertainty in 10 arcsec circular ap. mag.
+208,k_flg_10,L,1hd,-,"K confusion flag for 10 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+209,j_m_15,L,6.3f,mag,J 15 arcsec radius circular aperture magnitude.
+210,j_msig_15,L,5.3f,mag,J 1-sigma uncertainty in 15 arcsec circular ap. mag.
+211,j_flg_15,L,1hd,-,"J confusion flag for 15 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+212,h_m_15,L,6.3f,mag,H 15 arcsec radius circular aperture magnitude.
+213,h_msig_15,L,5.3f,mag,H 1-sigma uncertainty in 15 arcsec circular ap. mag.
+214,h_flg_15,L,1hd,-,"H confusion flag for 15 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+215,k_m_15,L,6.3f,mag,K 15 arcsec radius circular aperture magnitude.
+216,k_msig_15,L,5.3f,mag,K 1-sigma uncertainty in 15 arcsec circular ap. mag.
+217,k_flg_15,L,1hd,-,"K confusion flag for 15 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+218,j_m_20,L,6.3f,mag,J 20 arcsec radius circular aperture magnitude.
+219,j_msig_20,L,5.3f,mag,J 1-sigma uncertainty in 20 arcsec circular ap. mag.
+220,j_flg_20,L,1hd,-,"J confusion flag for 20 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+221,h_m_20,L,6.3f,mag,H 20 arcsec radius circular aperture magnitude.
+222,h_msig_20,L,5.3f,mag,H 1-sigma uncertainty in 20 arcsec circular ap. mag.
+223,h_flg_20,L,1hd,-,"H confusion flag for 20 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+224,k_m_20,L,6.3f,mag,K 20 arcsec radius circular aperture magnitude.
+225,k_msig_20,L,5.3f,mag,K 1-sigma uncertainty in 20 arcsec circular ap. mag.
+226,k_flg_20,L,1hd,-,"K confusion flag for 20 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+227,j_m_25,L,6.3f,mag,J 25 arcsec radius circular aperture magnitude.
+228,j_msig_25,L,5.3f,mag,J 1-sigma uncertainty in 25 arcsec circular ap. mag.
+229,j_flg_25,L,1hd,-,"J confusion flag for 25 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+230,h_m_25,L,6.3f,mag,H 25 arcsec radius circular aperture magnitude.
+231,h_msig_25,L,5.3f,mag,H 1-sigma uncertainty in 25 arcsec circular ap. mag.
+232,h_flg_25,L,1hd,-,"H confusion flag for 25 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+233,k_m_25,L,6.3f,mag,K 25 arcsec radius circular aperture magnitude.
+234,k_msig_25,L,5.3f,mag,K 1-sigma uncertainty in 25 arcsec circular ap. mag.
+235,k_flg_25,L,1hd,-,"K confusion flag for 25 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+236,j_m_30,L,6.3f,mag,J 30 arcsec radius circular aperture magnitude.
+237,j_msig_30,L,5.3f,mag,J 1-sigma uncertainty in 30 arcsec circular ap. mag.
+238,j_flg_30,L,1hd,-,"J confusion flag for 30 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+239,h_m_30,L,6.3f,mag,H 30 arcsec radius circular aperture magnitude.
+240,h_msig_30,L,5.3f,mag,H 1-sigma uncertainty in 30 arcsec circular ap. mag.
+241,h_flg_30,L,1hd,-,"H confusion flag for 30 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+242,k_m_30,L,6.3f,mag,K 30 arcsec radius circular aperture magnitude.
+243,k_msig_30,L,5.3f,mag,K 1-sigma uncertainty in 30 arcsec circular ap. mag.
+244,k_flg_30,L,1hd,-,"K confusion flag for 30 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+245,j_m_40,L,6.3f,mag,J 40 arcsec radius circular aperture magnitude.
+246,j_msig_40,L,5.3f,mag,J 1-sigma uncertainty in 40 arcsec circular ap. mag.
+247,j_flg_40,L,1hd,-,"J confusion flag for 40 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+248,h_m_40,L,6.3f,mag,H 40 arcsec radius circular aperture magnitude.
+249,h_msig_40,L,5.3f,mag,H 1-sigma uncertainty in 40 arcsec circular ap. mag.
+250,h_flg_40,L,1hd,-,"H confusion flag for 40 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+251,k_m_40,L,6.3f,mag,K 40 arcsec radius circular aperture magnitude.
+252,k_msig_40,L,5.3f,mag,K 1-sigma uncertainty in 40 arcsec circular ap. mag.
+253,k_flg_40,L,1hd,-,"K confusion flag for 40 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+254,j_m_50,L,6.3f,mag,J 50 arcsec radius circular aperture magnitude.
+255,j_msig_50,L,5.3f,mag,J 1-sigma uncertainty in 50 arcsec circular ap. mag.
+256,j_flg_50,L,1hd,-,"J confusion flag for 50 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+
+
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+257,h_m_50,L,6.3f,mag,H 50 arcsec radius circular aperture magnitude.
+258,h_msig_50,L,5.3f,mag,H 1-sigma uncertainty in 50 arcsec circular ap. mag.
+259,h_flg_50,L,1hd,-,"H confusion flag for 50 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+260,k_m_50,L,6.3f,mag,K 50 arcsec radius circular aperture magnitude.
+261,k_msig_50,L,5.3f,mag,K 1-sigma uncertainty in 50 arcsec circular ap. mag.
+262,k_flg_50,L,1hd,-,"K confusion flag for 50 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+263,j_m_60,L,6.3f,mag,J 60 arcsec radius circular aperture magnitude.
+264,j_msig_60,L,5.3f,mag,J 1-sigma uncertainty in 60 arcsec circular ap. mag.
+265,j_flg_60,L,1hd,-,"J confusion flag for 60 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+266,h_m_60,L,6.3f,mag,H 60 arcsec radius circular aperture magnitude.
+267,h_msig_60,L,5.3f,mag,H 1-sigma uncertainty in 60 arcsec circular ap. mag.
+268,h_flg_60,L,1hd,-,"H confusion flag for 60 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+269,k_m_60,L,6.3f,mag,K 60 arcsec radius circular aperture magnitude.
+270,k_msig_60,L,5.3f,mag,K 1-sigma uncertainty in 60 arcsec circular ap. mag.
+271,k_flg_60,L,1hd,-,"K confusion flag for 60 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+272,j_m_70,L,6.3f,mag,J 70 arcsec radius circular aperture magnitude.
+273,j_msig_70,L,5.3f,mag,J 1-sigma uncertainty in 70 arcsec circular ap. mag.
+274,j_flg_70,L,1hd,-,"J confusion flag for 70 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+275,h_m_70,L,6.3f,mag,H 70 arcsec radius circular aperture magnitude.
+276,h_msig_70,L,5.3f,mag,H 1-sigma uncertainty in 70 arcsec circular ap. mag.
+277,h_flg_70,L,1hd,-,"H confusion flag for 70 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+278,k_m_70,L,6.3f,mag,K 70 arcsec radius circular aperture magnitude.
+279,k_msig_70,L,5.3f,mag,K 1-sigma uncertainty in 70 arcsec circular ap. mag.
+280,k_flg_70,L,1hd,-,"K confusion flag for 70 arcsec circular ap. mag.
+The confusion flags [jhk]_flg 
+for each mag are defined as follows:
+0 if no other sources within aperture used 
+1 if ap contained pixels masked off in coadd 
+2 if ap contained pixels masked off due to neighboring sources 
+3 if ap contained pixels that had a point source flux subtracted off 
+4 if ap contained pixels within bright star mask 
+5 if ap contained pixels masked off due to persistence 
+6 if aperture ran into coadd boundary
+7 if ap contained pixels within bright galaxy mask 
+9 if integrated flux is negative
+If the integrated flux is negative, a mag value is calculated using
+    BFMag = 99.0 - [ZERO_CAL - 2.5 log10(|flux|)];
+the resulting mag range is between ~ 75 and 99."
+281,j_m_sys,L,6.3f,mag,"J system photometry magnitude.
+The system flux includes the flux from this extended source and anything else in the immediate area, including stars and neighboring galaxies that ""touch"" this source."
+282,j_msig_sys,L,5.3f,mag,J 1-sigma uncertainty in system photometry mag.
+283,h_m_sys,L,6.3f,mag,"H system photometry magnitude.
+The system flux includes the flux from this extended source and anything else in the immediate area, including stars and neighboring galaxies that ""touch"" this source."
+284,h_msig_sys,L,5.3f,mag,H 1-sigma uncertainty in system photometry mag.
+285,k_m_sys,L,6.3f,mag,"K system photometry magnitude.
+The system flux includes the flux from this extended source and anything else in the immediate area, including stars and neighboring galaxies that ""touch"" this source."
+286,k_msig_sys,L,5.3f,mag,K 1-sigma uncertainty in system photometry mag.
+287,sys_flg,L,1hd,-,"system flag: 0=no system, 1=nearby galaxy flux incl. in mag."
+288,contam_flg,L,1hd,-,"contamination flag: 0=no stars, 1=stellar flux incl. in mag."
+289,j_5sig_ba,L,5.3f,-,J minor/major axis ratio fit to the 5-sigma isophote.
+290,j_5sig_phi,L,3hd,deg,J angle to 5-sigma major axis (E of N).
+291,h_5sig_ba,L,5.3f,-,H minor/major axis ratio fit to the 5-sigma isophote.
+292,h_5sig_phi,L,3hd,deg,H angle to 5-sigma major axis (E of N).
+293,k_5sig_ba,L,5.3f,-,K minor/major axis ratio fit to the 5-sigma isophote.
+294,k_5sig_phi,L,3hd,deg,K angle to 5-sigma major axis (E of N).
+295,j_d_area,L,3hd,-,J 5-sigma to 3-sigma differential area.
+296,j_perc_darea,L,3hd,-,J 5-sigma to 3-sigma percent area change.
+297,h_d_area,L,3hd,-,H 5-sigma to 3-sigma differential area.
+298,h_perc_darea,L,3hd,-,H 5-sigma to 3-sigma percent area change.
+299,k_d_area,L,3hd,-,K 5-sigma to 3-sigma differential area.
+300,k_perc_darea,L,3hd,-,K 5-sigma to 3-sigma percent area change.
+301,j_bisym_rat,L,5.3f,-,J bi-symmetric flux ratio.
+302,j_bisym_chi,L,6.3f,-,J bi-symmetric cross-correlation chi.
+303,h_bisym_rat,L,5.3f,-,H bi-symmetric flux ratio.
+304,h_bisym_chi,L,6.3f,-,H bi-symmetric cross-correlation chi.
+305,k_bisym_rat,L,5.3f,-,K bi-symmetric flux ratio.
+306,k_bisym_chi,L,6.3f,-,K bi-symmetric cross-correlation chi.
+307,j_sh0,L,5.2f,-,J ridge shape (LCSB: BSNR limit).
+308,j_sig_sh0,L,5.2f,-,J ridge shape sigma (LCSB: B2SNR limit).
+309,h_sh0,L,5.2f,-,H ridge shape (LCSB: BSNR limit).
+310,h_sig_sh0,L,5.2f,-,H ridge shape sigma (LCSB: B2SNR limit).
+311,k_sh0,L,5.2f,-,K ridge shape (LCSB: BSNR limit).
+312,k_sig_sh0,L,5.2f,-,K ridge shape sigma (LCSB: B2SNR limit).
+313,j_sc_mxdn,L,6.1f,-,J mxdn (score) (LCSB: BSNR - block/smoothed SNR).
+314,j_sc_sh,L,6.1f,-,J shape (score).
+315,j_sc_wsh,L,6.1f,-,J wsh (score) (LCSB: PSNR - peak raw SNR).
+316,j_sc_r23,L,6.1f,-,J r23 (score) (LCSB: TSNR - integrated SNR for r=15).
+317,j_sc_1mm,L,6.1f,-,"J 1st moment (score) (LCSB: super blk 2,4,8 SNR)."
+318,j_sc_2mm,L,6.1f,-,J 2nd moment (score) (LCSB: SNRMAX - super SNR max).
+319,j_sc_vint,L,6.1f,-,J vint (score).
+320,j_sc_r1,L,6.1f,-,J r1 (score).
+321,j_sc_msh,L,6.1f,-,J median shape score.
+322,h_sc_mxdn,L,6.1f,-,H mxdn (score) (LCSB: BSNR - block/smoothed SNR).
+323,h_sc_sh,L,6.1f,-,H shape (score).
+324,h_sc_wsh,L,6.1f,-,H wsh (score) (LCSB: PSNR - peak raw SNR).
+325,h_sc_r23,L,6.1f,-,H r23 (score) (LCSB: TSNR - integrated SNR for r=15).
+326,h_sc_1mm,L,6.1f,-,"H 1st moment (score) (LCSB: super blk 2,4,8 SNR)."
+327,h_sc_2mm,L,6.1f,-,H 2nd moment (score) (LCSB: SNRMAX - super SNR max).
+328,h_sc_vint,L,6.1f,-,H vint (score).
+329,h_sc_r1,L,6.1f,-,H r1 (score).
+330,h_sc_msh,L,6.1f,-,H median shape score.
+331,k_sc_mxdn,L,6.1f,-,K mxdn (score) (LCSB: BSNR - block/smoothed SNR).
+332,k_sc_sh,L,6.1f,-,K shape (score).
+333,k_sc_wsh,L,6.1f,-,K wsh (score) (LCSB: PSNR - peak raw SNR).
+334,k_sc_r23,L,6.1f,-,K r23 (score) (LCSB: TSNR - integrated SNR for r=15).
+335,k_sc_1mm,L,6.1f,-,"K 1st moment (score) (LCSB: super blk 2,4,8 SNR)."
+336,k_sc_2mm,L,6.1f,-,K 2nd moment (score) (LCSB: SNRMAX - super SNR max).
+337,k_sc_vint,L,6.1f,-,K vint (score).
+338,k_sc_r1,L,6.1f,-,K r1 (score).
+339,k_sc_msh,L,6.1f,-,K median shape score.
+340,j_chif_ellf,L,6.1f,-,J % chi-fraction for elliptical fit to 3-sig isophote.
+341,k_chif_ellf,L,6.1f,-,K % chi-fraction for elliptical fit to 3-sig isophote.
+342,ellfit_flg,L,1hd,-,ellipse fitting contamination flag.
+343,sup_chif_ellf,L,6.1f,-,super-coadd % chi-fraction for ellip. fit to 3-sig isophote.
+344,n_blank,L,4hd,-,"number of blanked source records.
+These parameters refer to sources that were blanked and/or subtracted from the images before doing photometry. Data for each of these blanked or subtracted sources are found in the blanked and subtracted source tables."
+345,n_sub,L,4hd,-,"number of subtracted source records.
+These parameters refer to sources that were blanked and/or subtracted from the images before doing photometry. Data for each of these blanked or subtracted sources are found in the blanked and subtracted source tables."
+346,bl_sub_flg,L,1hd,-,blanked/subtracted src description flag.
+347,id_flg,L,1hd,-,"type/galaxy ID flag (0=non-catalog, 1=catalog, 2=LCSB).
+This flag indicates the extended source catalog type as follows:
+0 = extended source not found in another catalog 
+1 = extended source is found in galaxy catalog (ID found in id_cat field)
+2 = LCSB (Low Central Surface Brightness) source"
+348,id_cat,L,20s,-,matched galaxy's catalog name.
+349,fg_flg,L,6s,-,flux-growth convergence flag.
+350,blk_fac,L,1hd,-,"LCSB blocking factor (1, 2, 4, 8)."
+351,dup_src,L,1hd,-,"Duplicate source flag. Used in conjunction with the use_src flag, this numerical flag indicates whether the source falls in a Tile overlap region, and if so, if it was detected multiple times. 	•	""0"" = The source does not fall within a Tile overlap region (use_src=""1""), or it falls in an overlap region and there were no sources detected within 2"" of its position in the overlapping Tile (use_src=""0""). 
+	•	""1"" = The source falls within a Tile overlap region, and there is one source detected within 2"" of its position in the overlapping Tile. 
+	•	"">1"" = The source falls within a Tile overlap region, and there are multiple sources detected within 2"" of its position in the overlapping Tile, and/or within its own Tile. This implies confusion in the multiple source resolution procedure."
+352,use_src,L,1hd,-,"Use source flag. Used in conjunction with the dup_src flag, this numerical flag indicates if a source falls within a Tile overlap region, and whether or not it satisfies the unbiased selection rules for multiple source resolution. 	•	""1"" = The source does not fall in a Tile overlap region (dup_src=""0""), or it falls in an overlap region, but lies farther from its scan edge than any apparition of the source in another Tile. A source must have use_src=""1"" to be considered part of the sub-Catalog that satisfies the 2MASS Level 1 Science Requirements 
+	•	""0"" = The source falls in a Tile overlap region, but does not have a detection within 2"" of its position in any overlapping Tiles. PSC sources with use_src=""0"" will always have dup_src=""0"". Such objects are usually faint, and thus toggling above and below the detection limits, or may have moved between the scans of the different Tiles. 
+	•	"">1"" = The source falls within a Tile overlap region, and there are multiple sources detected within 2"" of its position in the overlapping Tile, and/or within its own Tile. This implies confusion in the multiple source resolution procedure."
+353,prox,L,5.1f,arcsec,"Proximity. The distance between this source and its nearest neighbor in the PSC. The pts_key of the nearest source is given in the pxcntr column. The effective resolution of the 2MASS system is approximately 5"". Any source with prox < 6"" is potentially confused with a nearby object, and should be used with caution. "
+354,pxpa,L,3hd,deg,"The position angle on the sky of the vector from the source to the nearest neighbor in the PSC, in degrees East of North. This column in null if prox=0.0, which occurs only for confused sources or from errors in the bandmerge process caused by confusion. "
+355,pxcntr,L,10d,-,ext_key value of nearest XSC source.
+356,dist_edge_ns,L,%5d,arcsec,"The distance from the source to the nearest North or South scan edge. The scan edge is defined by the great-circle interpolation between the 3-band coverage corners. The equatorial coordinates of the 3-band coverage corners are given in the Scan Information Table, referenced by the scan_key. The first character of the dist_edge_flg indicates to which edge the source is closer. "
+357,dist_edge_ew,L,%3d,arcsec,"The distance from the source to the nearest East or West scan edge. The scan edge is defined by the great-circle interpolation between the 3-band coverage corners. The equatorial coordinates of the 3-band coverage corners are given in the Scan Information Table, referenced by the scan_key. The second character of the dist_edge_flg indicates to which edge the source is closer."
+358,dist_edge_flg,L,%2s,-,flag indicating which edges ([n|s][e|w]) are nearest to src.
+359,pts_key,L,10d,-,"key to point source data DB record.
+If the source has point source data (i.e. it is not an LCSB), this field will be set to the key of the record in the point source table containing the point source data. The point source data will also have the same date, hemisphere, scan, id keys."
+360,mp_key,L,5d,-,"key to minor planet prediction DB record.
+If a minor planet (asteroid) is predicted at this src's position, the field is set to the key of the record containing the minor planet prediction data (see the minor planet tbls). The minor planet data will also have the same date, hemisphere, scan, id keys."
+361,night_key,L,4d,-,"key to night data record in ""scan DB"".
+This field is set to the key of the record containing the corresponding night data in the night data table. The records will also have the same date and hemisphere keys."
+362,scan_key,S,6d,-,"key to scan data record in ""scan DB"".
+This field is set to the key of the record containing the corresponding scan data in the scan data table. The records will also have the same date, hemisphere, scan keys."
+363,coadd_key,L,7d,-,"key to coadd data record in ""scan DB"".
+This field is set to the key of the record containing the corresponding J, H, and K band coadd data in the coadd data table. The records will also have the same date, hemisphere, scan, coadd keys."
+364,hemis,L,1s,-,"hemisphere (N/S) of observation. ""n"" = North/Mt. Hopkins; ""s"" = South/CTIO. "
+365,date,L,yyyy-mm-dd,-,"The observation reference date for this source expressed in ISO standard format. This is the UT day value at sunrise for the night on which the source was observed. Because it is possible for the UT day to change during a night of observations, the actual UT date for a source measurement can differ from date by one day. Use the Julian Day value (jdate) for a more accurate determination of the observation time of the source."
+366,scan,L,3hd,-,scan number (unique within date).
+367,coadd,L,03hd,-,3-digit coadd number (unique within scan).
+368,id,L,6d,-,"source ID number (unique within scan, coadd)."
+369,x_coadd,L,6.1f,arcsec,x (cross-scan) position (coadd coord.).
+370,y_coadd,L,6.1f,arcsec,y (in-scan) position (coadd coord.).
+371,j_subst2,L,6.1f,-,J residual background #2 (score).
+372,h_subst2,L,6.1f,-,H residual background #2 (score).
+373,k_subst2,L,6.1f,-,K residual background #2 (score).
+374,j_back,L,6.1f,-,J coadd median background.
+375,h_back,L,6.1f,-,H coadd median background.
+376,k_back,L,6.1f,-,K coadd median background.
+377,j_resid_ann,L,7.3f,DN,J residual annulus background median.
+378,h_resid_ann,L,7.3f,DN,H residual annulus background median.
+379,k_resid_ann,L,7.3f,DN,K residual annulus background median.
+380,j_bndg_per,L,5d,arcsec,J banding Fourier Transf. period on this side of coadd.
+381,j_bndg_amp,L,6.3f,DN,J banding maximum FT amplitude on this side of coadd.
+382,h_bndg_per,L,5d,arcsec,H banding Fourier Transf. period on this side of coadd.
+383,h_bndg_amp,L,6.3f,DN,H banding maximum FT amplitude on this side of coadd.
+384,k_bndg_per,L,5d,arcsec,K banding Fourier Transf. period on this side of coadd.
+385,k_bndg_amp,L,6.3f,DN,K banding maximum FT amplitude on this side of coadd.
+386,j_seetrack,L,4.1f,-,J band seetracking score.
+387,h_seetrack,L,4.1f,-,H band seetracking score.
+388,k_seetrack,L,4.1f,-,K band seetracking score.
+389,ext_key,S,9d,-,entry counter (key) number (unique within table).
