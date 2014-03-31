@@ -1,0 +1,19 @@
+# To create production version for distribution
+
+To create distribution package, use `sdist` option (source distribution):
+
+    python setup.py sdist
+
+
+# to upload to PyPI:
+
+
+    python setup.py register -r pypi
+    python setup.py sdist upload -r pypi
+
+
+# Project Log
+
+
+
+

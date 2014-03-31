@@ -1,0 +1,13 @@
+include *.txt
+include README.md
+exclude NOTES.txt
+exclude TODO.txt
+exclude confirm_order_of_xsc.py
+exclude *.pyc
+include format_descriptors
+include format_descriptors/psc_format_descriptor.csv
+include format_descriptors/xsc_format_descriptor.csv
+exclude format_descriptors/format_xsc.csv
+exclude format_descriptors/format_psc.csv
+exclude format_descriptors/create_psc_format_descriptor.py
+exclude format_descriptors/create_xsc_format_descriptor.py
