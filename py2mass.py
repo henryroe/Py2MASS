@@ -12,7 +12,7 @@ import pdb
 import io
 
 
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 
 
 class Error(Exception):
@@ -45,9 +45,18 @@ def _find_2mass_dir():
                 "             py2mass.set_2mass_path('~/my_2mass_dir')")
     return None
 
+try:
+    _2mass_dir = _find_2mass_dir()
+except:
+    print ("Could not find a 2MASS installation\n" +
+           "             User needs to specifiy location with, e.g.:\n" +
+           "             py2mass.set_2mass_path('~/my_2mass_dir')")
+    _2mass_dir = None
 
-_2mass_dir = _find_2mass_dir()
 
+def set_2mass_path(path2mass):
+    global _2mass_dir
+    _2mass_dir = path2mass
 
 # def fetch_star_by_2mass_id(twomass_ids, epoch=None):
 #     """

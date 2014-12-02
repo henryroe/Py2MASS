@@ -1,1 +1,3 @@
 v0.1.0, 2014-03-26 -- Initial release.
+v0.1.1, 2014-03-31 -- added py2mass_process_original_psc.py, which had been missing
+v0.1.2, 2014-12-02 -- implemented set_2mass_path and that an invalid _2mass_path does not crash the module at initial import
