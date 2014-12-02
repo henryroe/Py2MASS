@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='Py2MASS',
-      version='0.1.0',
+      version='0.1.2',
       description='Routines for accessing a self-hosted local copy of the 2MASS point-source and extended source catalogs (PSC, XSC)',
       long_description=open('README.md').read(),
       author='Henry Roe',
