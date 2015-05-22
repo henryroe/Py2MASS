@@ -11,8 +11,13 @@ import pickle
 import pdb
 import io
 
+base_dir = os.path.abspath(os.path.dirname(__file__))
 
-__version__ = '0.1.1'
+about = {}
+with open(os.path.join(base_dir, "__about__.py")) as f:
+    exec(f.read(), about)
+
+__version__ = about["__version__"]
 
 
 class Error(Exception):
@@ -220,7 +225,7 @@ def fetch_2mass_psc_box(ra_range, dec_range):
     return _convert_psc_text_to_dataframe(sources_txt)
 
 
-if __name__ == '__main__':
+def main():
     show_help = False
     if len(sys.argv) == 1 or "help" in sys.argv:
         show_help = True
@@ -262,3 +267,7 @@ if __name__ == '__main__':
         print " which can then be read back in from file with, e.g.:"
         print "    import pickle"
         print "    stars = pickle.load(open(filename, 'r'))"
+
+
+if __name__ == '__main__':
+    main()

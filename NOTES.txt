@@ -1,19 +1,119 @@
-# To create production version for distribution
 
-To create distribution package, use `sdist` option (source distribution):
+This file is intended for my own use, for summarizing how to package, test, release...
 
+## Test in a clean venv:
+
+Package up in the 'normal' python environment:
+    cd ~/Dropbox/py/Py2MASS
+    # rm -rf dist/*  # you probably want to do this to clean up
     python setup.py sdist
 
+Create a venv & install py2mass & develop py2mass with:
+    cd ~/Dropbox/py/Py2MASS
+    canopy_cli venv -s test-venv
+    source test-venv/bin/activate
+    python setup.py develop
+    cd test-venv
+    ipython
+    import py2mass
+    py2mass.set_2mass_path('/Volumes/Offloader/2MASS/')
+    ra_range = [281., 281.05]  #    RA is in degrees
+    dec_range = [-30.6, -30.55]  #  Dec is in degrees
+    stars = py2mass.fetch_2mass_psc_box(ra_range, dec_range)
 
-# to upload to PyPI:
 
 
-    python setup.py register -r pypi
-    python setup.py sdist upload -r pypi
+## Original upload to github
+
+Create a blank ztv repository on github, and then:
+
+    cd /Users/hroe/Dropbox/py/Py2MASS
+    git remote add origin git@github.com:henryroe/Py2MASS.git
+    git push -u origin master
 
 
-# Project Log
+
+## Upload a version to github
+
+TODO: develop a checklist for before uploading
+
+    cd /Users/hroe/Dropbox/py/Py2MASS
+    versionnumber=`python -c "execfile('py2mass/__about__.py') ; print(__version__)"`
+    git tag -a $versionnumber -m "Tagged for version "$versionnumber
+    git push origin $versionnumber
+    
+
+## Upload a version to pypi
+
+[following along from here](https://python-packaging-user-guide.readthedocs.org/en/latest/distributing.html)
+
+TODO: develop a checklist for before uploading
+
+    cd /Users/hroe/Dropbox/py/Py2MASS
+    # rm -rf dist/*  # you probably want to do this to clean up
+    # rm -rf build   # you may want to do this to clean up?
+    python setup.py sdist
+
+Test is working in a 'clean' python install:
+
+    cd /Users/hroe/Dropbox/py/ztv
+    rm -rf minimal-venv
+  
+v1:  quickie where you rely on the existing canopy packages (just double check you're not being fooled by an already installed ztv!)
+
+    cd ~/Dropbox/py/Py2MASS
+    canopy_cli venv -s test-venv
+    source test-venv/bin/activate
+    cd ~/Dropbox/py/Py2MASS/dist/
+    tar -zxvf Py2MASS-0.1.2.tar.gz
+    cd Py2MASS-0.1.2
+    python setup.py install
+    ipython
+    import py2mass
+    py2mass.set_2mass_path('/Volumes/Offloader/2MASS/')
+    ra_range = [281., 281.05]  #    RA is in degrees
+    dec_range = [-30.6, -30.55]  #  Dec is in degrees
+    stars = py2mass.fetch_2mass_psc_box(ra_range, dec_range)
+    print py2mass.__version__
+    
+---- end of test of sdist
+
+Prep a wheel:
+
+    python setup.py bdist_wheel
+    
+(as random aside, this was working one minute, and then the next was giving a "NameError: name 'sys_platform' is not defined".  The answer was to do a `pip install --upgrade setuptools`, which doesn't explain irrational behavior, but did fix it...)
+
+Register on pypi (to save spot for now) [here](https://pypi.python.org/pypi?%3Aaction=submit_form), uploading `/Users/hroe/Dropbox/py/ztv/ztv.egg-info/PKG-INFO`
+
+Register on testpypi [here](https://testpypi.python.org/pypi?%3Aaction=submit_form), uploading `/Users/hroe/Dropbox/py/ztv/ztv.egg-info/PKG-INFO`
+
+Now, upload to testpypi:
+
+    cd /Users/hroe/Dropbox/py/ztv
+    twine upload -r testpypi dist/*
 
 
+Now, upload to pypi-test & test install from there:
 
+    cd /Users/hroe/Dropbox/py/ztv
+    rm -rf minimal-venv
+    canopy_cli venv -s minimal-venv
+    cd minimal-venv      # important so you're not fooled by seeing the local source files of ztv
+    source bin/activate
+    pip install -i https://testpypi.python.org/pypi ztv
+
+Now, finally ready to do a final build, tag release version, upload to github, and upload to pypi & test install from there:
+
+    # FIRST, be sure to have updated CHANGES.txt
+    cd /Users/hroe/Dropbox/py/Py2MASS
+    rm -rf dist/*  # you probably want to do this to clean up
+    rm -rf build   # you may want to do this to clean up?
+    python setup.py sdist
+    versionnumber=`python -c "execfile('py2mass/__about__.py') ; print(__version__)"`
+    git tag -a $versionnumber -m "Tagged for version "$versionnumber
+    git push origin $versionnumber
+    python setup.py sdist
+    python setup.py bdist_wheel
+    twine upload -r pypi dist/*
 

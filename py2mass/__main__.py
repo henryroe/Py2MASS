@@ -1,9 +1,10 @@
-#!/usr/bin/env python
-
-from py2mass import *
+from __future__ import absolute_import
+import pickle
 import sys
 
-if __name__ == '__main__':
+from .py2mass import set_2mass_path, fetch_2mass_xsc_box, fetch_2mass_psc_box, __version__
+
+def main():
     show_help = False
     if len(sys.argv) == 1 or "help" in sys.argv:
         show_help = True
@@ -45,3 +46,7 @@ if __name__ == '__main__':
         print " which can then be read back in from file with, e.g.:"
         print "    import pickle"
         print "    stars = pickle.load(open(filename, 'r'))"
+
+
+if __name__ == '__main__':
+    main()
