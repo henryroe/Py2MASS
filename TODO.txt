@@ -5,6 +5,8 @@
 
 ## Clean up `py2mass_process_original_psc`
 
+## get command line script access working again
+
 # Known Bugs
 
 None.
