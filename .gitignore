@@ -1,8 +1,4 @@
+py2mass.bbprojectd
 .DS_Store
 dist
-Py2MASS.egg-info/dependency_links.txt
-Py2MASS.egg-info/PKG-INFO
-Py2MASS.egg-info/requires.txt
-Py2MASS.egg-info/SOURCES.txt
-Py2MASS.egg-info/top_level.txt
-py2mass.pyc
+Py2MASS.egg-info
