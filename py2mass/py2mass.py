@@ -10,6 +10,9 @@ import sys
 import pickle
 import pdb
 import io
+import glob
+from astropy.coordinates import SkyCoord, ICRS
+from astropy import units
 
 base_dir = os.path.abspath(os.path.dirname(__file__))
 
@@ -23,6 +26,9 @@ __version__ = about["__version__"]
 class Error(Exception):
     pass
 
+
+class PathTo2MASSNotFound(Exception):
+    pass
 
 class FileNotFound(Exception):
     pass
@@ -39,15 +45,16 @@ def _find_2mass_dir():
     of the directory.
     """
     paths_to_search = [os.environ.get('2MASS_DIR')]
-    paths_to_search.append('~/2MASS/')
-    paths_to_search.append('~/2mass/')
+    paths_to_search.append('~/2[mM][aA][sS][sS]/')
+    for cur_path in glob.glob('/Volumes/*/2[mM][aA][sS][sS]'):
+        paths_to_search.append(cur_path)
     for cur_path_to_test in paths_to_search:
         if cur_path_to_test is not None:
             if os.path.isdir(os.path.expanduser(cur_path_to_test)):
                 return os.path.expanduser(cur_path_to_test)
-    raise Error("py2mass.py:  No 2MASS installation found.\n" +
-                "             User needs to specifiy location with, e.g.:\n" +
-                "             py2mass.set_2mass_path('~/my_2mass_dir')")
+    raise PathTo2MASSNotFound("py2mass.py:  No 2MASS installation found.\n" +
+                              "             User needs to specifiy location with, e.g.:\n" +
+                              "             py2mass.set_2mass_path('~/my_2mass_dir')")
     return None
 
 try:
@@ -79,6 +86,10 @@ def _get_file_object(file_basename):
 
     Open the file (with gunzip if necessary) and return the file object.
     """
+    if _2mass_dir is None:
+        raise PathTo2MASSNotFound("_2mass_dir is None\n" +
+                                  "             User needs to specifiy location with, e.g.:\n" +
+                                  "             py2mass.set_2mass_path('~/my_2mass_dir')")
     if os.path.exists(_2mass_dir + '/' + file_basename + '.gz'):
         return gzip.open(_2mass_dir + '/' + file_basename + '.gz', 'r')
     elif os.path.exists(_2mass_dir + '/' + file_basename):
@@ -116,7 +127,8 @@ def _convert_xsc_text_to_dataframe(sources_txt):
     Takes raw lines from extended source catalog (XSC) file and converts to a pandas DataFrame
     """
     xsc_format_descriptor = _get_xsc_format_descriptor()
-    return read_csv(io.StringIO(unicode(sources_txt)), sep='|', names=xsc_format_descriptor['Parameter Name'].values)
+    return _add_skycoord_radec_field_xsc(read_csv(io.StringIO(unicode(sources_txt)), sep='|', 
+                                                  names=xsc_format_descriptor['Parameter Name'].values))
 
 
 def _convert_psc_text_to_dataframe(sources_txt):
@@ -124,7 +136,32 @@ def _convert_psc_text_to_dataframe(sources_txt):
     Takes raw lines from point source catalog (PSC) file and converts to a pandas DataFrame
     """
     psc_format_descriptor = _get_psc_format_descriptor()
-    return read_csv(io.StringIO(unicode(sources_txt)), sep='|', names=psc_format_descriptor['Column Name'].values)
+    return _add_skycoord_radec_field_psc(read_csv(io.StringIO(unicode(sources_txt)), sep='|', 
+                                                  names=psc_format_descriptor['Column Name'].values))
+
+
+def _add_skycoord_radec_field_psc(df):
+    """
+    for PSC objects:
+    Add the ICRS coordinates as 'radec' column in SkyCoord type object
+    (ra & dec/decl fields in decimal deg)
+    """
+    df['radec'] = [SkyCoord(df.loc[ix, 'ra'], df.loc[ix, 'dec/decl'], 
+                            frame=ICRS, unit=(units.degree, units.degree))
+                   for ix in df.index]
+    return df
+
+
+def _add_skycoord_radec_field_xsc(df):
+    """
+    for XSC objects:
+    Add the Super-coadd centroid as 'radec' column in SkyCoord type object
+    (sup_ra & sup_dec fields in decimal deg)
+    """
+    df['radec'] = [SkyCoord(df.loc[ix, 'sup_ra'], df.loc[ix, 'sup_dec'], 
+                            frame=ICRS, unit=(units.degree, units.degree))
+                   for ix in df.index]
+    return df
 
 
 def fetch_2mass_xsc_box(ra_range, dec_range):
