@@ -10,7 +10,7 @@ __summary__ = "Py2MASS is used for accessing a locally hosted copy of 2MASS PSC/
 __uri__ = "https://github.com/henryroe/Py2MASS"
 
 # VERSION should be PEP386 compatible (http://www.python.org/dev/peps/pep-0386)
-__version__ = "0.1.4"
+__version__ = "0.1.5dev"
 
 # Indicates if this version is a release version
 RELEASE = 'dev' not in __version__

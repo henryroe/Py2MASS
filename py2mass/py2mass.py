@@ -127,8 +127,8 @@ def _convert_xsc_text_to_dataframe(sources_txt):
     Takes raw lines from extended source catalog (XSC) file and converts to a pandas DataFrame
     """
     xsc_format_descriptor = _get_xsc_format_descriptor()
-    return _add_skycoord_radec_field_xsc(read_csv(io.StringIO(unicode(sources_txt)), sep='|', 
-                                                  names=xsc_format_descriptor['Parameter Name'].values))
+    return read_csv(io.StringIO(unicode(sources_txt)), sep='|', 
+                    names=xsc_format_descriptor['Parameter Name'].values)
 
 
 def _convert_psc_text_to_dataframe(sources_txt):
@@ -136,8 +136,8 @@ def _convert_psc_text_to_dataframe(sources_txt):
     Takes raw lines from point source catalog (PSC) file and converts to a pandas DataFrame
     """
     psc_format_descriptor = _get_psc_format_descriptor()
-    return _add_skycoord_radec_field_psc(read_csv(io.StringIO(unicode(sources_txt)), sep='|', 
-                                                  names=psc_format_descriptor['Column Name'].values))
+    return read_csv(io.StringIO(unicode(sources_txt)), sep='|', 
+                    names=psc_format_descriptor['Column Name'].values)
 
 
 def _add_skycoord_radec_field_psc(df):
@@ -146,9 +146,8 @@ def _add_skycoord_radec_field_psc(df):
     Add the ICRS coordinates as 'radec' column in SkyCoord type object
     (ra & dec/decl fields in decimal deg)
     """
-    df['radec'] = [SkyCoord(df.loc[ix, 'ra'], df.loc[ix, 'dec/decl'], 
-                            frame=ICRS, unit=(units.degree, units.degree))
-                   for ix in df.index]
+    df['radec'] = SkyCoord(df['ra'].values, df['dec/decl'].values, 
+                           frame=ICRS, unit=(units.degree, units.degree))
     return df
 
 
@@ -158,9 +157,8 @@ def _add_skycoord_radec_field_xsc(df):
     Add the Super-coadd centroid as 'radec' column in SkyCoord type object
     (sup_ra & sup_dec fields in decimal deg)
     """
-    df['radec'] = [SkyCoord(df.loc[ix, 'sup_ra'], df.loc[ix, 'sup_dec'], 
-                            frame=ICRS, unit=(units.degree, units.degree))
-                   for ix in df.index]
+    df['radec'] = SkyCoord(df['sup_ra'].values, df['sup_dec'].values, 
+                           frame=ICRS, unit=(units.degree, units.degree))
     return df
 
 
@@ -218,7 +216,7 @@ def fetch_2mass_xsc_box(ra_range, dec_range):
                 else:
                     if (cur_peak_ra >= ra_range[0]) and (cur_peak_ra < ra_range[1]):
                         sources_txt += curline
-    return _convert_xsc_text_to_dataframe(sources_txt)
+    return _add_skycoord_radec_field_xsc(_convert_xsc_text_to_dataframe(sources_txt))
 
 
 
@@ -259,7 +257,7 @@ def fetch_2mass_psc_box(ra_range, dec_range):
                     sources_txt += curline
                 if cur_ra > ra_range[1]:  # past RA range in this dec band
                     break
-    return _convert_psc_text_to_dataframe(sources_txt)
+    return _add_skycoord_radec_field_psc(_convert_psc_text_to_dataframe(sources_txt))
 
 
 def main():
