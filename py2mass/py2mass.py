@@ -11,8 +11,6 @@ import pickle
 import pdb
 import io
 import glob
-from astropy.coordinates import SkyCoord, ICRS
-from astropy import units
 
 base_dir = os.path.abspath(os.path.dirname(__file__))
 
@@ -140,28 +138,6 @@ def _convert_psc_text_to_dataframe(sources_txt):
                     names=psc_format_descriptor['Column Name'].values)
 
 
-def _add_skycoord_radec_field_psc(df):
-    """
-    for PSC objects:
-    Add the ICRS coordinates as 'radec' column in SkyCoord type object
-    (ra & dec/decl fields in decimal deg)
-    """
-    df['radec'] = SkyCoord(df['ra'].values, df['dec/decl'].values, 
-                           frame=ICRS, unit=(units.degree, units.degree))
-    return df
-
-
-def _add_skycoord_radec_field_xsc(df):
-    """
-    for XSC objects:
-    Add the Super-coadd centroid as 'radec' column in SkyCoord type object
-    (sup_ra & sup_dec fields in decimal deg)
-    """
-    df['radec'] = SkyCoord(df['sup_ra'].values, df['sup_dec'].values, 
-                           frame=ICRS, unit=(units.degree, units.degree))
-    return df
-
-
 def fetch_2mass_xsc_box(ra_range, dec_range):
     """
     Fetch sources from the 2MASS Extended Source Catalog (XSC) within the RA/DEC range:
@@ -216,7 +192,7 @@ def fetch_2mass_xsc_box(ra_range, dec_range):
                 else:
                     if (cur_peak_ra >= ra_range[0]) and (cur_peak_ra < ra_range[1]):
                         sources_txt += curline
-    return _add_skycoord_radec_field_xsc(_convert_xsc_text_to_dataframe(sources_txt))
+    return _convert_xsc_text_to_dataframe(sources_txt)
 
 
 
@@ -257,7 +233,7 @@ def fetch_2mass_psc_box(ra_range, dec_range):
                     sources_txt += curline
                 if cur_ra > ra_range[1]:  # past RA range in this dec band
                     break
-    return _add_skycoord_radec_field_psc(_convert_psc_text_to_dataframe(sources_txt))
+    return _convert_psc_text_to_dataframe(sources_txt)
 
 
 def main():

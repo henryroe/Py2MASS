@@ -3,6 +3,14 @@ Py2MASS Change Log
 ~~~~~~~~~~~~~~~~~~
 
 ------------------
+v0.1.5, 2015-07-10
+------------------
+
+- removed use of SkyCoord because was causing serious performance issues
+- removed astropy dependency b/c no longer needed
+- added astropy_helper dependency as was missing
+
+------------------
 v0.1.4, 2015-05-23
 ------------------
 
